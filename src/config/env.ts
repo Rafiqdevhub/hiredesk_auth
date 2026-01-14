@@ -12,7 +12,7 @@ export const config = {
         "https://hiredesk.vercel.app",
         "http://localhost:3000",
         "http://localhost:8000",
-        "https://jobpsych-ai.vercel.app",
+        "https://hiredesk-ai.vercel.app",
         "https://hr-resume-analyzer-backend.vercel.app",
       ],
   nodeEnv: process.env.NODE_ENV || "development",
@@ -43,7 +43,7 @@ export const config = {
       user: process.env.SMTP_USER || "",
       pass: process.env.SMTP_PASS || "",
     },
-    from: process.env.EMAIL_FROM || "noreply@jobpsych.com",
+    from: process.env.EMAIL_FROM || "noreply@hiredesk.com",
     verificationExpiry: parseInt(process.env.VERIFICATION_EXPIRY || "86400000"), // 24 hours in milliseconds
   },
 } as const;

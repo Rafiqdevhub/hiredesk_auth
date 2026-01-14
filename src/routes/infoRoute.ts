@@ -5,10 +5,10 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   res.json({
-    api: "JobPsych Auth API",
+    api: "HireDesk Auth API",
     version: "3.1.0",
     description:
-      "Complete authentication, email verification, and rate limiting system for JobPsych platform with user management, JWT authentication, secure email verification, and FastAPI integration.",
+      "Complete authentication, email verification, and rate limiting system for HireDesk platform with user management, JWT authentication, secure email verification, and FastAPI integration.",
     status: "Server is running",
     timestamp: new Date().toISOString(),
     environment: config.nodeEnv,
@@ -339,7 +339,7 @@ router.get("/", (req, res) => {
           "Instructions for resetting password",
           "Security warning about not sharing email",
           "Contact support link",
-          "JobPsych branding and footer",
+          "HireDesk branding and footer",
         ],
       },
       database: {
@@ -1057,7 +1057,7 @@ router.get("/", (req, res) => {
 
     featureTracking: {
       overview:
-        "Complete analytics system for tracking user activities across the JobPsych platform",
+        "Complete analytics system for tracking user activities across the HireDesk platform",
       counters: {
         filesUploaded: {
           description: "Resume files uploaded by user",
@@ -1146,7 +1146,7 @@ router.get("/", (req, res) => {
     },
 
     documentation:
-      "Complete authentication, email verification, and rate limiting system for JobPsych platform. Features JWT authentication with email verification, secure token-based verification, modern HTML email templates, file upload tracking, FastAPI integration, and comprehensive security measures. Built with TypeScript, Express.js, Drizzle ORM, and PostgreSQL.",
+      "Complete authentication, email verification, and rate limiting system for HireDesk platform. Features JWT authentication with email verification, secure token-based verification, modern HTML email templates, file upload tracking, FastAPI integration, and comprehensive security measures. Built with TypeScript, Express.js, Drizzle ORM, and PostgreSQL.",
   });
 });
 

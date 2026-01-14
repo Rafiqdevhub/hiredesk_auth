@@ -1,8 +1,8 @@
-# JobPsych Backend API - File Counter Implementation Guide
+# HireDesk Backend API - Authentication Service
 
 ## Overview
 
-JobPsych is a secure backend API built with Node.js, Express, TypeScript, and NeonDB (PostgreSQL) that provides authentication and file counting services. The system implements industry-standard security practices with JWT access tokens and HttpOnly refresh tokens.
+HireDesk is a secure backend API built with Node.js, Express, TypeScript, and NeonDB (PostgreSQL) that provides authentication and file counting services. The system implements industry-standard security practices with JWT access tokens and HttpOnly refresh tokens.
 
 ## Architecture
 
@@ -56,13 +56,43 @@ JobPsych is a secure backend API built with Node.js, Express, TypeScript, and Ne
 └── .env.example
 ```
 
+## Data Model (ERD)
+
+Single-table schema (`users`) used for auth, feature usage, and rate limits:
+
+```text
+users
+├─ id (serial, PK)
+├─ name (varchar, not null)
+├─ email (varchar, unique, not null)
+├─ company_name (varchar, not null)
+├─ password (varchar, hashed, not null)
+├─ refreshToken (varchar, nullable)
+├─ filesUploaded (integer, not null, default 0)
+├─ batch_analysis (integer, not null, default 0)
+├─ compare_resumes (integer, not null, default 0)
+├─ selected_candidate (integer, not null, default 0)  ← used for candidate selection rate limit
+├─ emailVerified (boolean, not null, default false)
+├─ verificationToken (varchar, nullable)
+├─ verificationExpires (timestamp, nullable)
+├─ resetToken (varchar, nullable)
+├─ resetTokenExpires (timestamp, nullable)
+├─ created_at (timestamp, default now)
+└─ updated_at (timestamp, default now)
+```
+
+Key relationships/usage:
+
+- Tokens: `verificationToken`/`verificationExpires` for email verification; `resetToken`/`resetTokenExpires` for password reset; `refreshToken` for JWT refresh.
+- Rate limits & counters: `filesUploaded`, `batch_analysis`, `compare_resumes`, `selected_candidate` (10 max for selected_candidate per instructions).
+
 ## Environment Setup
 
 ### 1. Clone and Install
 
 ```bash
 git clone
-cd jobpsych_backend
+cd hiredesk_backend
 npm install
 ```
 
@@ -95,7 +125,7 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
-EMAIL_FROM=noreply@jobpsych.com
+EMAIL_FROM=noreply@hiredesk.com
 FRONTEND_URL=http://localhost:3000
 VERIFICATION_EXPIRY=86400000
 ```
@@ -432,8 +462,8 @@ Authorization: Bearer <access_token>
 
 ```bash
 # Create React app
-npx create-react-app jobpsych-frontend
-cd jobpsych-frontend
+npx create-react-app hiredesk-frontend
+cd hiredesk-frontend
 npm install axios
 ```
 
@@ -623,7 +653,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Login to JobPsych</h2>
+      <h2>Login to HireDesk</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
@@ -935,7 +965,7 @@ DATABASE_URL=<production-neondb-connection-string>
 ```bash
 # Using PM2
 npm install -g pm2
-pm2 start dist/index.js --name jobpsych-api
+pm2 start dist/index.js --name hiredesk-api
 pm2 startup
 pm2 save
 ```

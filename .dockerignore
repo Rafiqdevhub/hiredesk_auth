@@ -3,26 +3,91 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
+.npm
+.yarn
 
 # Builds and caches
 dist
 build
 coverage
 .nyc_output
+*.tsbuildinfo
 
 # Local env and secrets
 .env
 .env.*
+!.env.example
 
 # IDE/editor
 .vscode
 .idea
 *.swp
+*.swo
+*~
 
 # Git
 .git
 .gitignore
+.gitattributes
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Tests
+tests/
+test-results/
+playwright-report/
+*.test.ts
+*.spec.ts
+__tests__/
+coverage/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+azure-pipelines.yml
+
+# Docker
+docker-compose*.yml
+Dockerfile
+dockerfile
+.dockerignore
+*.dockerfile
+
+# Documentation
+*.md
+!README.md
+docs/
+
+# Database
+*.sqlite
+*.db
+drizzle/
+migrations/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Performance and load testing
+loadtest/
+performance-results/
+scripts/test-*.js
+scripts/performance-*.js
+
+# Miscellaneous
+.editorconfig
+.prettierrc*
+.eslintrc*
+.eslintignore
+jest.config.*
+playwright.config.*
+vercel.json
+.vercel/

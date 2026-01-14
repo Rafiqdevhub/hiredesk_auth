@@ -1,7 +1,7 @@
 {
-  "name": "jobpsych-backend",
+  "name": "hiredesk-backend",
   "version": "1.0.0",
-  "description": "JobPsych backend service",
+  "description": "HireDesk backend authentication service",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",

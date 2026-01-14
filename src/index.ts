@@ -33,7 +33,7 @@ app.use("/", infoRoute);
 app.get("/health", (req, res) => {
   res.json({
     status: "OK",
-    service: "jobpsych-auth-api",
+    service: "hiredesk-auth-api",
     uptime: process.uptime(),
     timestamp: new Date().toISOString(),
     version: "3.0.0",
@@ -103,7 +103,7 @@ app.use(
 if (require.main === module) {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
-    console.log(`JobPsych Auth API running on http://localhost:${PORT}`);
+    console.log(`HireDesk Auth API running on http://localhost:${PORT}`);
   });
 }
 

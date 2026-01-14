@@ -22,7 +22,7 @@ const getVerificationEmailTemplate = (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify Your Email - JobPsych</title>
+    <title>Verify Your Email - HireDesk</title>
     <style>
         * {
             margin: 0;
@@ -312,7 +312,7 @@ const getVerificationEmailTemplate = (
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">JobPsych</div>
+            <div class="logo">HireDesk</div>
             <div class="tagline">AI-Powered Resume Analysis</div>
         </div>
 
@@ -342,7 +342,7 @@ const getVerificationEmailTemplate = (
                 Questions? Reach out to our <a href="mailto:rafkhan9323@gmail.com">support team</a>
             </p>
             <p>
-                © 2025 JobPsych • Built with ❤️ for HR professionals
+                © 2025 HireDesk • Built with ❤️ for HR professionals
             </p>
         </div>
     </div>
@@ -364,7 +364,7 @@ export const sendVerificationEmail = async (
     const mailOptions = {
       from: config.email.from,
       to: email,
-      subject: "Verify Your Email - JobPsych",
+      subject: "Verify Your Email - HireDesk",
       html: getVerificationEmailTemplate(name, verificationUrl),
     };
 
@@ -399,7 +399,7 @@ const getPasswordResetEmailTemplate = (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Your Password - JobPsych</title>
+    <title>Reset Your Password - HireDesk</title>
     <style>
         * {
             margin: 0;
@@ -674,7 +674,7 @@ const getPasswordResetEmailTemplate = (
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">JobPsych</div>
+            <div class="logo">HireDesk</div>
             <div class="tagline">Secure Password Reset</div>
         </div>
 
@@ -706,10 +706,10 @@ const getPasswordResetEmailTemplate = (
         <div class="footer">
             <div class="divider"></div>
             <p>
-                Questions? Reach out to our <a href="mailto:support@jobpsych.com">support team</a>
+                Questions? Reach out to our <a href="mailto:support@hiredesk.com">support team</a>
             </p>
             <p>
-                © 2025 JobPsych • Built with for HR professionals
+                © 2025 HireDesk • Built with for HR professionals
             </p>
         </div>
     </div>
@@ -732,7 +732,7 @@ export const sendPasswordResetEmail = async (
     const mailOptions = {
       from: config.email.from,
       to: email,
-      subject: "Reset Your Password - JobPsych",
+      subject: "Reset Your Password - HireDesk",
       html: getPasswordResetEmailTemplate(name, resetUrl),
     };
 

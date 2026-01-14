@@ -47,7 +47,7 @@ router.get("/jwt-info", getJWTInfo);
 // Service info endpoint for health checks
 router.get("/info", (req, res) => {
   res.json({
-    api: "JobPsych Auth API",
+    api: "HireDesk Auth API",
     version: "3.1.0",
     status: "Server is running",
     timestamp: new Date().toISOString(),

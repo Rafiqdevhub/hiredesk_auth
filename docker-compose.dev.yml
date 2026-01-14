@@ -1,0 +1,27 @@
+version: "3.9"
+
+# Development-specific docker-compose configuration
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  hiredesk-auth-api:
+    build:
+      target: builder
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://hiredesk_user:hiredesk_password@postgres:5432/hiredesk_auth?sslmode=disable
+    command: ["npm", "run", "dev"]
+    ports:
+      - "5000:5000"
+      - "9229:9229" # Node.js debugger port
+
+  postgres:
+    environment:
+      - POSTGRES_DB=hiredesk_auth_dev
+    ports:
+      - "5432:5432"
+    profiles: [] # Always run in dev mode
