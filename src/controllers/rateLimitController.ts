@@ -19,7 +19,7 @@ export const getUserUploads = async (
   try {
     const { email } = req.params;
 
-    if (!email) {
+    if (!email || typeof email !== "string") {
       res.status(400).json({
         success: false,
         message: "Email is required",
@@ -547,7 +547,7 @@ export const getFeatureUsage = async (
     const { email } = req.params;
 
     // Validate email parameter
-    if (!email) {
+    if (!email || typeof email !== "string") {
       res.status(400).json({
         success: false,
         message: "Email is required",

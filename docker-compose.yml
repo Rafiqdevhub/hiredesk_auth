@@ -19,9 +19,6 @@ services:
       # For production with NeonDB, use .env file DATABASE_URL
     ports:
       - "5000:5000"
-    depends_on:
-      postgres:
-        condition: service_healthy
     networks:
       - hiredesk-network
     healthcheck:
@@ -65,21 +62,19 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 10s
+      start_period: 40s
     labels:
       - "com.hiredesk.service=database"
-    profiles:
-      - development
-      - local
 
-  # PGAdmin for database management (optional, development only)
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: hiredesk-pgadmin
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@hiredesk.com
-      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL:-admin@hiredesk.com}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD:-admin}
       - PGADMIN_LISTEN_PORT=80
     ports:
       - "8080:80"
@@ -98,6 +93,7 @@ networks:
   hiredesk-network:
     driver: bridge
     name: hiredesk-network
+    external: false
 
 volumes:
   postgres_data:

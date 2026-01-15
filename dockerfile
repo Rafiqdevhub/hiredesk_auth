@@ -7,7 +7,6 @@ RUN npm ci || npm install
 COPY tsconfig.json ./
 COPY src ./src
 COPY public ./public
-COPY vercel.json ./vercel.json
 
 RUN npm run build
 
